@@ -1,0 +1,6 @@
+.box {
+	width: 100px;
+	height: 100px;
+	position:absolute;
+	transition: transform 1s, z-index 1s, background 1s
+}

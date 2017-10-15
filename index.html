@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<title>Test Page</title>
+	</head>
+	<body>
+		<style>
+			#container {
+				margin-top: 200px;
+				margin-left: 200px;
+			}
+		</style>
+		
+		<!-- create a element id: container and modify its style-->
+		<div id="container"></div>
+		
+		<!-- Scripts -->
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+		<script src="flow.js"/>
+		
+		<script>
+		
+			// 样式由两个部分组成， 一个 baseStyle, 在initFlow之前设置， 在初始化时和hoverOut的时候会自动恢复到这个样式
+			// 另一个在setHoverEvent的 HoverIn事件中定义需要hover时显示的样式
+			
+			$(function (){
+				var color = ["blue", "black", "red", "yellow", "green", "brown"];
+				var color2 = ["black", "red", "yellow", "green", "brown", "blue"];
+				
+				setCallBaseStyle(function(elem) {
+					elem.css({
+						// set base style of each elements here
+						"background": color[parseInt(elem.attr("t"))]
+					});
+				});
+				
+				//hook hover event here
+				setHoverEvent(function(index) {
+					var elem = $($("#container > div")[index])  
+					elem.css({
+						"background": color2[parseInt(elem.attr("t"))]
+					});
+				}, null);
+				initFlow();
+			})
+		</script>
+	</body>
+</html>
